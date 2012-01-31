@@ -15,7 +15,7 @@
 			$this->_from = $from;
 			$this->_message = $message;	
 			
-			$this->send;
+			$this->send();
 		}
 		
 		private function setup_headers ()
@@ -31,7 +31,7 @@
 		{
 			$this->setup_headers();
 			
-			mail( $this->_recipent, $this->_subject, $this->_message, $headers );
+			mail( $this->_recipent, $this->_subject, $this->_message, $this->_headers );
 		}
 			
 	}
