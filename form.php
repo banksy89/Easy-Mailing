@@ -2,14 +2,16 @@
 include ( 'Classes/Handle_form.php' );
 
 // Assign the columns within your form
-$cols = array ( 'name' => 'Please provide your name', 
-				'email' => 'Please provide your email address', 
-				'message' => 'Please provide a message for email'
+$columns = array ( 'name' => 'Please provide your name', 
+				   'email' => 'Please provide your email address', 
+				   'message' => 'Please provide a message for email'
 			   );
+			   
 
 // Initiate the class		   
 $_handle = new Handle_form ();
-
+// Set the columns to use
+$_handle->setColumns ( $columns );
 // Process the form.
 $result = $_handle->process ();
 ?>

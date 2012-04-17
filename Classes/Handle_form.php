@@ -1,4 +1,5 @@
 <?php
+
 	/**
 	* Handles the processing of the form
 	*/
@@ -16,6 +17,7 @@
 		{
 			$this->_validation = new Validation;
 			$this->_mail = new Mail;
+			return $this;
 		}
 		
 		public function setColumns ( $columns )
