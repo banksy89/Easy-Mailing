@@ -21,16 +21,14 @@ function process_form ()
 		
 		if ( $_val->work )
 		{
-			$_mail = new Send_mail;
+			$_mail = new Mail;
 			
-			$message = file_get_contents( 'Email.php' );
-	
-			foreach ( $cols as $col => $key )
-			{
-				$message = str_replace( '{' . strtoupper( $col ) . '}', $_POST[ $col ], $message );
-			}
-			
-			$_mail->setter ( $_POST['email'], 'Subject of choice', 'info@ashley.com', $message );
+			$_mail->setter ( RECIPENT, 'me@me.com' )
+				  ->setter ( SUBJECT, 'A subject' )
+				  ->setter ( FROM, 'me@me.com' )
+				  ->setBody ( 'Email.php', $_POST );
+				  
+			$_mail->send ();
 			
 			return TRUE;
 		}

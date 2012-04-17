@@ -1,37 +1,49 @@
 <?php
-
-	class Send_mail {
+	
+	define ( 'SUBJECT', 'subject' );
+	define ( 'FROM', 'from' );
+	define ( 'RECIPENT', 'recipent' );
+	
+	class Mail {
 		
 		private $_recipent,
 				$_subject,
 				$_from,
 				$_message,
 				$_headers;
-		
-		public function setter ( $recipent, $subject, $from, $message )
+				
+		public function setter ( $field, $value )
 		{
-			$this->_recipent = $recipent;
-			$this->_subject = $subject;
-			$this->_from = $from;
-			$this->_message = $message;	
-			
-			$this->send;
+			$this->{'_'. $field } = $value;
+			return $this;	
 		}
 		
-		private function setup_headers ()
+		public function setBody ( $email, $columns )
+		{
+			$message = file_get_contents( $email );
+	
+			foreach ( $cols as $col => $key )
+				$this->_message = str_replace( '{' . strtoupper( $col ) . '}', $key, $message );
+				
+			return $this;
+		}
+		
+		private function setHeaders ()
 		{
 			$this->_headers = 'From: '. $this->_from . "\n" .
 							  'Reply-To: '. $this->_from . "\n" .
 							  'X-Mailer: PHP/' . phpversion();
 			$this->_headers .= 'MIME-Version: 1.0' . "\n";
 			$this->_headers .= 'Content-type: text/html; charset=iso-8859-1' . "\n";
+			
+			return $this;
 		}
 		
-		private function send ()
+		public function send ()
 		{
-			$this->setup_headers();
+			$this->setHeaders();
 			
-			mail( $this->_recipent, $this->_subject, $this->_message, $headers );
+			mail ( $this->_recipent, $this->_subject, $this->_message, $this->_headers );
 		}
 			
 	}
