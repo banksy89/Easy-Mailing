@@ -1,12 +1,23 @@
 <?php
-include ( 'Form_action.php' );
-$result = process_form ();
+include ( 'Classes/Handle_form.php' );
+
+// Assign the columns within your form
+$cols = array ( 'name' => 'Please provide your name', 
+				'email' => 'Please provide your email address', 
+				'message' => 'Please provide a message for email'
+			   );
+
+// Initiate the class		   
+$_handle = new Handle_form ();
+
+// Process the form.
+$result = $_handle->process ();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Untitled Document</title>
+<title>Test Form Page</title>
 </head>
 
 <body>
