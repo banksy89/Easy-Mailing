@@ -26,6 +26,8 @@
 				$this->_message = str_replace( '{' . strtoupper( $col ) . '}', $key, $message );
 				
 			return $this;
+			
+			$this->send();
 		}
 		
 		private function setHeaders ()
@@ -42,8 +44,7 @@
 		public function send ()
 		{
 			$this->setHeaders();
-			
-			mail ( $this->_recipent, $this->_subject, $this->_message, $this->_headers );
+			mail( $this->_recipent, $this->_subject, $this->_message, $this->_headers );
 		}
 			
 	}
