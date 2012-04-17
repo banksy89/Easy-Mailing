@@ -1,6 +1,9 @@
-<h1>Making Contact Forms Easy.</h1>
-<p>Just a simple contact form handling script, which I threw together quickly but works pretty well.</p>
-<p><strong>To use: </strong></p>
-<p>Form_action.php is the main function that processes the form, all you have to do is change the $cols array within it the the form element names you want to use...there is an example usage in form.php of how to use within a normal page.</p>
-<p>This is based on a simple tempting system, so you set up your HTML email within Email.php and replace the tags ( in capitals ) to the same name as your form elements.</p>
-<p>So that is that! This is just for myself to use if I ever come across a static site that only needs a contact form - I can quickly throw this on there and be done with it!</p>
+<h1>Contact Form.</h1>
+<p>Handles the validation of a form. Takes any given columns you provide. Supports Email templating. Simple to use.</p>
+<p><strong>A quick guide: </strong></p>
+<ul>
+  <ol>Place the folders in to your chosen destination</ol>
+  <ol>Use <i>form.php</i> as an example of how to apply the form.</ol>
+</ul>
+<p>Still need to check the constants. As may revert back to just using a string within the handle_form. </p>
+
