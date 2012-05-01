@@ -23,16 +23,19 @@
 			return $this;	
 		}
 		
-		public function setBody ( $email, $columns )
+		public function setBody ( $email, $columns = "" )
 		{
-			$message = file_get_contents( $email );
-	
-			foreach ( $cols as $col => $key )
-				$this->_message = str_replace( '{' . strtoupper( $col ) . '}', $key, $message );
+			if ( !!$columns )
+			{
+				$message = file_get_contents( $email );
+		
+				foreach ( $cols as $col => $key )
+					$this->_message = str_replace( '{' . strtoupper( $col ) . '}', $key, $message );
+			}
+			else
+				$message = $email;
 				
 			return $this;
-			
-			$this->send();
 		}
 		
 		/**
