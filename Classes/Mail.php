@@ -33,7 +33,7 @@
 					$this->_message = str_replace( '{' . strtoupper( $col ) . '}', $key, $message );
 			}
 			else
-				$message = $email;
+				$this->_message = $email;
 				
 			return $this;
 		}
