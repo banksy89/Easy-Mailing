@@ -29,8 +29,10 @@
 			{
 				$message = file_get_contents( $email );
 		
-				foreach ( $cols as $col => $key )
-					$this->_message = str_replace( '{' . strtoupper( $col ) . '}', $key, $message );
+				foreach ( $columns as $col => $key )
+					$message = str_replace( '{' . strtoupper( $col ) . '}', $key, $message );
+					
+				$this->_message = $message;
 			}
 			else
 				$this->_message = $email;
